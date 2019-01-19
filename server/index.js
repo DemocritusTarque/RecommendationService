@@ -18,18 +18,11 @@ app.use(/(\/\d+)/, express.static(path.join(__dirname, '../public')));
 
 // Get current product related Items
 // original endpoint: '/relatedItems/:categoryName/:id'
-app.get('/relatedItems/:categoryName/:id', (req, res) => {
-  Products.findAll({
-    where: {
-      categoryName: req.params.categoryName,
-      [db.Op.not]: {
-        id: req.params.id,
-      },
-    },
-    order: db.literal('rand()'),
-    limit: 6,
-  })
+app.get('/:id', (req, res) => {
+  console.log('get-endpoint00');
+  db.selectOne()
     .then((relatedItems) => {
+      console.log('get-endpoint',relateditems)
       Products.findAll({
         where: {
           [db.Op.not]: { categoryName: req.params.categoryName },
@@ -37,9 +30,8 @@ app.get('/relatedItems/:categoryName/:id', (req, res) => {
         order: db.literal('rand()'),
         limit: 8,
       }).then((otherRelatedItems) => {
-        console.log('first server log', relatedItems);
-        console.log('second server log',otherRelatedItems);
-        res.status(200).json([...relatedItems, ...otherRelatedItems]);
+        console.log('relateditems: ', relatedItems);
+        res.status(200).json([...relatedItems/*, ...otherRelatedItems*/]);
       });
     })
     .catch((error) => {
