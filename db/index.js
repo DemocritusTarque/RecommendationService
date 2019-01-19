@@ -19,6 +19,18 @@ pool.query('SELECT NOW()', (err, res) => {
   console.log(err, res)
   pool.end()
 })
+// according to: https://node-postgres.com/features/pooling
+// this pool method is faster for software
+//  that makes frequent queries
+
+const selectOne = pool.query(
+  'Select * from rec_products where id=50',
+  (err,res) =>{
+    console.log('selectOne')
+  }
+) 
+
+
 
 const client = new Client({
   user: 'siegel',
@@ -29,7 +41,8 @@ const client = new Client({
 })
 client.connect()
 
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
-})
+// client.query('SELECT NOW()', (err, res) => {
+//   console.log('poop',err, res)
+//   client.end()
+// })
+
