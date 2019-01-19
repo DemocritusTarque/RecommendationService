@@ -46,9 +46,9 @@ class App extends React.Component {
       })
       .then(() => {
         this.saveCurrProduct(this.state.currProduct);
-        this.getAccessories();
-        this.getRelatedItems();
-        this.getPastItems();
+        // this.getAccessories();
+        // this.getRelatedItems();
+        // this.getPastItems();
       })
       .catch(err => {
         console.log('there was an error with currProduct get request: ', err);
