@@ -32,7 +32,7 @@ class App extends React.Component {
 
   getCurrProduct() {
     axios
-      .get(`http://localhost:3011/${this.currURL}`)
+      .get(`http://localhost:9000/${this.currURL}`)
       .then(result => {
         this.setState({
           currProduct: {
