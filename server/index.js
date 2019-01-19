@@ -19,7 +19,7 @@ app.use(/(\/\d+)/, express.static(path.join(__dirname, '../public')));
 // Get current product related Items
 // original endpoint: '/relatedItems/:categoryName/:id'
 app.get('/:id', (req, res) => {
-  console.log('get-endpoint00');
+  console.log('get-endpoint00', db);
   db.selectOne()
     .then((relatedItems) => {
       console.log('get-endpoint',relateditems)
@@ -44,7 +44,7 @@ app.get('/:id', (req, res) => {
 
 
 
-const port = 3011; // Change Me for Proxy!!
+const port = 9000; // Change Me for Proxy!!
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

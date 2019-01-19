@@ -23,13 +23,14 @@ const pool = new Pool({
 // this pool method is faster for software
 //  that makes frequent queries
 
-const selectOne = pool.query(
+const selectOne = function() {pool.query(
   'Select * from rec_products where id=9000000',
   (err,res) =>{
     console.log('selectOne: ',res)
     return res;
   }
 ) 
+}
 
 
 
