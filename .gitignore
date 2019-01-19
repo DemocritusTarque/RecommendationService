@@ -3,3 +3,6 @@ node_modules
 
 # webpack bundle
 public/app.bundle.js
+
+newrelic.js
+newrelic_agent.log
