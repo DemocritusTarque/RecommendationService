@@ -15,18 +15,19 @@ const pool = new Pool({
   port: 5432,
 })
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
 // according to: https://node-postgres.com/features/pooling
 // this pool method is faster for software
 //  that makes frequent queries
 
 const selectOne = pool.query(
-  'Select * from rec_products where id=50',
+  'Select * from rec_products where id=9000000',
   (err,res) =>{
-    console.log('selectOne')
+    console.log('selectOne: ',res)
+    return res;
   }
 ) 
 
@@ -46,3 +47,7 @@ client.connect()
 //   client.end()
 // })
 
+
+module.exports = {
+  selectOne
+}
