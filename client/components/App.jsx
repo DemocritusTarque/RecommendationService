@@ -31,10 +31,11 @@ class App extends React.Component {
   }
 
   getCurrProduct() {
+    console.log('currurl: ', this.currURL)
     axios
-      .get(`http://localhost:9000/${this.currURL}`)
+      .get(`http://localhost:9000/api/${this.currURL}`)
       .then(result => {
-        console.log('initial GET: ',result);
+        console.log('initial GET: ',result.data);
         this.setState({
           currProduct: {
             productID: result.data.id,
