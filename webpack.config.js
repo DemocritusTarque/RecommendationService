@@ -21,10 +21,5 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    proxy: {
-      "/api": "http://localhost:8900"
-    }
-  }
   plugins: [new webpack.optimize.ModuleConcatenationPlugin()],
 };

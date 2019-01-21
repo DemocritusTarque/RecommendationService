@@ -1,0 +1,9 @@
+config:
+  target: 'http://localhost:9000'
+  phases:
+    - duration: 5
+      arrivalRate: 10
+scenarios:
+  - flow:
+    - get:
+        url: "/api/5"
