@@ -34,18 +34,19 @@ class App extends React.Component {
     axios
       .get(`http://localhost:9000/${this.currURL}`)
       .then(result => {
+        console.log('initial GET: ',result);
         this.setState({
           currProduct: {
             productID: result.data.id,
             name: result.data.name,
             price: result.data.price,
-            imageURL: result.data.imageURL,
-            categoryName: result.data.categoryName,
+            imageURL: result.data.imageURL/*,
+            categoryName: result.data.categoryName,*/
           },
         });
       })
       .then(() => {
-        this.saveCurrProduct(this.state.currProduct);
+        //this.saveCurrProduct(this.state.currProduct);
         // this.getAccessories();
         // this.getRelatedItems();
         // this.getPastItems();
@@ -95,6 +96,10 @@ class App extends React.Component {
       });
   }
 
+
+
+  //original endpoint for getRelatedItems:
+    //axios.get(`http://localhost:9000/relatedItems/${this.state.currProduct.categoryName}/${this.currURL}`
   getRelatedItems() {
     axios
       .get(

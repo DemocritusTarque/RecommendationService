@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('../db/index.js');
+const Promise = require("bluebird");
 
 // Middleware
 app.use(cors());
@@ -19,25 +20,28 @@ app.use(/(\/\d+)/, express.static(path.join(__dirname, '../public')));
 // Get current product related Items
 // original endpoint: '/relatedItems/:categoryName/:id'
 app.get('/:id', (req, res) => {
-  console.log('get-endpoint00', db);
   db.selectOne()
-    .then((relatedItems) => {
-      console.log('get-endpoint',relateditems)
-      Products.findAll({
-        where: {
-          [db.Op.not]: { categoryName: req.params.categoryName },
-        },
-        order: db.literal('rand()'),
-        limit: 8,
-      }).then((otherRelatedItems) => {
-        console.log('relateditems: ', relatedItems);
-        res.status(200).json([...relatedItems/*, ...otherRelatedItems*/]);
-      });
-    })
-    .catch((error) => {
-      console.log('There was an error getting products from the DB: ', error);
-      res.sendStatus(404);
-    });
+  .then(recommended => {
+    console.log('recd item: ',recommended)
+  })
+  // doit.then(()=>{console.log("poop")})
+  //   .then((relatedItems) => {
+  //     console.log('get-endpoint',relateditems)
+  //     Products.findAll({
+  //       where: {
+  //         [db.Op.not]: { categoryName: req.params.categoryName },
+  //       },
+  //       order: db.literal('rand()'),
+  //       limit: 8,
+  //     }).then((otherRelatedItems) => {
+  //       console.log('relateditems: ', relatedItems);
+  //       res.status(200).json([...relatedItems/*, ...otherRelatedItems*/]);
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.log('There was an error getting products from the DB: ', error);
+  //     res.sendStatus(404);
+  //   });
 });
 
 
