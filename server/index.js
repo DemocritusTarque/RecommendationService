@@ -26,24 +26,6 @@ app.get('/api/:id', (req, res) => {
     console.log('recd item: ',recommended)
     res.status(200).json(recommended)
   })
-  // doit.then(()=>{console.log("poop")})
-  //   .then((relatedItems) => {
-  //     console.log('get-endpoint',relateditems)
-  //     Products.findAll({
-  //       where: {
-  //         [db.Op.not]: { categoryName: req.params.categoryName },
-  //       },
-  //       order: db.literal('rand()'),
-  //       limit: 8,
-  //     }).then((otherRelatedItems) => {
-  //       console.log('relateditems: ', relatedItems);
-  //       res.status(200).json([...relatedItems/*, ...otherRelatedItems*/]);
-  //     });
-  //   })
-  //   .catch((error) => {
-  //     console.log('There was an error getting products from the DB: ', error);
-  //     res.sendStatus(404);
-  //   });
 });
 
 
