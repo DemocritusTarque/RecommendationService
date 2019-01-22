@@ -44,10 +44,11 @@ client.connect()
 const selectOne = function(productId) {
   return pool.connect()
     .then(client => {
-      return client.query(`Select * from rec_products where id=${productId}`)
+      return client.query(`Select * from rec_products where id>${productId-2} AND id<${parseInt(productId)+2}`)
         .then(res => {
           client.release()
           //console.log('db side: ',res.rows[0])
+          console.log('rows: ',res.rows);
           return res.rows[0];
         })
         .catch(err => {
