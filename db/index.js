@@ -48,8 +48,8 @@ const selectOne = function(productId) {
         .then(res => {
           client.release()
           //console.log('db side: ',res.rows[0])
-          console.log('rows: ',res.rows);
-          return res.rows[0];
+          //console.log('rows: ',res.rows);
+          return res.rows;
         })
         .catch(err => {
           client.release()
