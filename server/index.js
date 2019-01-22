@@ -20,7 +20,8 @@ app.use(/(\/\d+)/, express.static(path.join(__dirname, '../public')));
 // Get current product related Items
 // original endpoint: '/relatedItems/:categoryName/:id'
 app.get('/api/:id', (req, res) => {
-  db.selectOne()
+  let productId = req.url.substring(5);
+  db.selectOne(productId)
   .then(recommended => {
     console.log('recd item: ',recommended)
     res.status(200).json(recommended)

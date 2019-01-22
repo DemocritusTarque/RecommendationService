@@ -41,10 +41,10 @@ client.connect()
 // ) 
 // }
 
-const selectOne = function() {
+const selectOne = function(productId) {
   return pool.connect()
     .then(client => {
-      return client.query('Select * from rec_products where id=9000000')
+      return client.query(`Select * from rec_products where id=${productId}`)
         .then(res => {
           client.release()
           //console.log('db side: ',res.rows[0])
