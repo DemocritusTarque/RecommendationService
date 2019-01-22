@@ -58,6 +58,8 @@ const selectOne = function(productId) {
     })
 }
 
+
+
 // pool.connect()
 //   .then(client => {
 //     return client.query('Select * from rec_products where id=9000000', [1])

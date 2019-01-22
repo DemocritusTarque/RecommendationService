@@ -37,7 +37,7 @@ class App extends React.Component {
       .then(result => {
         console.log('initial GET: ',result.data);
          this.setState({
-          relatedItems: result.data;
+          relatedItems: result.data
         // This code sets the current product for the entire component normally, 
         //    but I'm changing it to hold an array of  products to go into the list view
 
@@ -48,7 +48,7 @@ class App extends React.Component {
         //     price: result.data.price,
         //     imageURL: result.data.imageURL/*,
         //    categoryName: result.data.categoryName,*/
-          }),
+          });
         })
       .then(() => {
         //this.saveCurrProduct(this.state.currProduct);
