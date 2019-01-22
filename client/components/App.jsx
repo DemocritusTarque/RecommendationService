@@ -36,16 +36,20 @@ class App extends React.Component {
       .get(`http://localhost:9000/api/${this.currURL}`)
       .then(result => {
         console.log('initial GET: ',result.data);
-        this.setState({
-          currProduct: {
-            productID: result.data.id,
-            name: result.data.name,
-            price: result.data.price,
-            imageURL: result.data.imageURL/*,
-            categoryName: result.data.categoryName,*/
-          },
-        });
-      })
+         this.setState({
+          relatedItems: result.data;
+        // This code sets the current product for the entire component normally, 
+        //    but I'm changing it to hold an array of  products to go into the list view
+
+
+        //   currProduct: {
+        //     productID: result.data.id,
+        //     name: result.data.name,
+        //     price: result.data.price,
+        //     imageURL: result.data.imageURL/*,
+        //    categoryName: result.data.categoryName,*/
+          }),
+        })
       .then(() => {
         //this.saveCurrProduct(this.state.currProduct);
         // this.getAccessories();
